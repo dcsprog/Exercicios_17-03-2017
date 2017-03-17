@@ -8,16 +8,16 @@ import model.Dados;
 public class Principal {
 
 	static Scanner teclado = new Scanner(System.in);
+	static ArrayList <Dados> bd = new ArrayList<Dados>();
+	static int idP;
 	
 public static void InserirCliente(){
 		
 		
 		
-		ArrayList <Dados> bd = new ArrayList<Dados>();
 		
 		
 		int opc=0;
-		int idP=0;
 		int id=0;
 		String nome = null;
 		String morada=null;
@@ -54,13 +54,19 @@ public static void InserirCliente(){
  			
 		}
 		
+		/**System.out.println("\tINSIRA O CODIGO REGISTO QUE PROCURA: ");
+		idP = teclado.nextInt();
+		idP-=1;
+		new Dados().listarDados(bd,idP);*/
+		
+		
+	}
+
+	public static void listar(){
 		System.out.println("\tINSIRA O CODIGO REGISTO QUE PROCURA: ");
 		idP = teclado.nextInt();
 		idP-=1;
 		new Dados().listarDados(bd,idP);
-		
-		
-		
 	}
 
 
