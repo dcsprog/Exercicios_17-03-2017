@@ -10,6 +10,10 @@ public class Produtos {
 	public float precoProduto;
 	public int stockProduto;
 	
+	public Produtos(){
+		
+	}
+	
 	
 	public Produtos(int idProduto, String nomeProduto, float precoProduto, int stockProduto) {
 		super();
