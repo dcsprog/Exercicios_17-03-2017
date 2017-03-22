@@ -2,6 +2,9 @@ package view;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 import model.Dados;
@@ -13,6 +16,7 @@ public class Principal {
 	static Scanner teclado = new Scanner(System.in);
 	static ArrayList <Dados> bd = new ArrayList<Dados>();
 	static ArrayList <Produtos> bdProduto = new ArrayList<Produtos>();
+	
 	static Menu m = new Menu();
 	static int idC;
 	static int idP;
@@ -79,10 +83,10 @@ public static void inserirProduto(){
 	
 	System.out.println("QUANTOS REGISTOS DESEJA EFETUAR?");
 	int quant = teclado.nextInt();
-	
-	
+	int n=bdProduto.size();
+	System.out.println(n);
 	for(int i=0; i<quant; i++){
-		idProduto=(i+1);
+		idProduto=n+1;
 		System.out.println("INSIRA O NOME DO PRODUTO: ");
 		teclado.nextLine();
 		nomeProduto = teclado.nextLine();
@@ -93,7 +97,19 @@ public static void inserirProduto(){
 		
 			Produtos produto = new Produtos(idProduto, nomeProduto,precoProduto, stockProduto);
 			bdProduto = produto.addProduto(bdProduto, produto);
+		n++;
+			final Comparator<Produtos> ordenar = 
+					new Comparator<Produtos>() {
+				public int compare(Produtos p1, Produtos p2){
+					//crescente p1=p2//p2--p2 decrescente
+					return p1.getNomeProduto().compareTo(p2.getNomeProduto());
+				}
+
+				
+			};
 			
+			Collections.sort(bdProduto,ordenar);
+			new Produtos().listarProdutos(bdProduto,0);
 	}
 	
 	/**System.out.println("\tINSIRA O CODIGO REGISTO QUE PROCURA: ");
@@ -120,6 +136,7 @@ public static void inserirProduto(){
 	}
 
 	
+		
 
 	
 	public static void main(String[] args) {
@@ -164,7 +181,7 @@ public static void inserirProduto(){
 								switch(opcProduto){
 									case 1:inserirProduto();break;
 									case 2:listarPro();break;
-									case 3:verMenuPro=false;break;
+									case 4:verMenuPro=false;break;
 									default:System.out.println("Opcao invalida...");
 								}
 							}while(verMenuPro);

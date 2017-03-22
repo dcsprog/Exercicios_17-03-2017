@@ -29,6 +29,8 @@ public class Menu {
 		System.out.println("             1 - REGISTAR PRODUTO             ");
 		System.out.println();
 		System.out.println("             2 - VERIFICAR PRODUTO            ");
+		/*System.out.println();
+		System.out.println("             3 - ORDENAR ARRAYLIST");*/
 		System.out.println();
 		System.out.println("             3 - SAIR                         ");
 		System.out.println();
